@@ -40,7 +40,7 @@ get '/logout' do
 end
 
 get '/auth' do
-  callback_url = "http://localhost:4567/auth_success"
+  callback_url = "http://" + request.host + ":" + request.port.to_s + "/auth_success"
   request_token = oauth_consumer.get_request_token(:oauth_callback => callback_url)
   session[:request_token] = request_token.token
   session[:request_token_secret] = request_token.secret
